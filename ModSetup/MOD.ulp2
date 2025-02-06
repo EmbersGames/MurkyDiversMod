@@ -1,0 +1,125 @@
+{
+	"Version": 35,
+	"Id": "E3DC8C0C406202332CD014B3898F3669",
+	"Name": "Mod",
+	"Description": "",
+	"BuildConfiguration": 4,
+	"ProjectSpecified": true,
+	"ShareableProjectPath": "%%UPROJECT%%",
+	"CookConfiguration": 4,
+	"CookIncremental": false,
+	"CookOptions": "",
+	"CookMode": 1,
+	"CookUnversioned": true,
+	"CookedCultures": [
+		"fr"
+	],
+	"CookedPlatforms": [
+		"Windows"
+	],
+	"DeployStreamingServer": false,
+	"DeployWithUnrealPak": true,
+	"DeployedDeviceGroupId": "718B49504689C38EBCFA18A349B42D10",
+	"DeploymentMode": 0,
+	"HideFileServerWindow": false,
+	"LaunchMode": 2,
+	"PackagingMode": 0,
+	"PackageDir": "",
+	"BuildMode": 0,
+	"ForceClose": true,
+	"Timeout": 60,
+	"Compressed": true,
+	"EncryptIniFiles": false,
+	"ForDistribution": false,
+	"DeployPlatform": "None",
+	"SkipCookingEditorContent": false,
+	"DeployIncremental": false,
+	"GeneratePatch": false,
+	"AddPatchLevel": false,
+	"StageBaseReleasePaks": true,
+	"DLCIncludeEngineContent": true,
+	"CreateReleaseVersion": false,
+	"CreateReleaseVersionName": "",
+	"BasedOnReleaseVersionName": "1.0",
+	"ReferenceContainerGlobalFileName": "",
+	"ReferenceContainerCryptoKeysFileName": "",
+	"RetainStagedDirectory": false,
+	"OriginalReleaseVersionName": "",
+	"CreateDLC": true,
+	"DLCName": "MD_Mod_Test",
+	"GenerateChunks": false,
+	"GenerateHttpChunkData": false,
+	"HttpChunkDataDirectory": "",
+	"HttpChunkDataReleaseName": "",
+	"Archive": false,
+	"ArchiveDirectory": "",
+	"AdditionalCommandLineParameters": "",
+	"IncludePrerequisites": false,
+	"UseIoStore": false,
+	"MakeBinaryConfig": false,
+	"BuildTargetSpecified": false,
+	"BuildTargetName": "",
+	"DefaultRole":
+	{
+		"AssignedDevice": "",
+		"CommandLine": "",
+		"DeviceId": "",
+		"InitialCulture": "fr",
+		"InitialMapName": "",
+		"Name": "DefaultRole",
+		"InstanceType": 2,
+		"VsyncEnabled": false
+	},
+	"scripts": [
+		{
+			"script": "BuildCookRun",
+			"project": "%%UPROJECT%%",
+			"noP4": true,
+			"nocompile": true,
+			"nocompileeditor": true,
+			"unrealexe": "%%UNREAL_INSTALL_PATH%%\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+			"utf8output": true,
+			"clientconfig": [
+				"Shipping"
+			],
+			"serverconfig": [
+				"Shipping"
+			],
+			"platform": [
+				"Win64"
+			],
+			"cmdline":
+			{
+				"": "",
+				"messaging": true
+			},
+			"device": [
+				""
+			],
+			"addcmdline":
+			{
+				"sessionid": "250BBB7B4ADF43A11393A38576F6DF6C",
+				"sessionowner": "flore",
+				"sessionname": "Mod"
+			},
+			"map": [
+				""
+			],
+			"build": true,
+			"cook": true,
+			"unversionedcookedcontent": true,
+			"pak": true,
+			"dlcname": "MD_Mod_Test",
+			"generatepatch": false,
+			"basedonreleaseversion": "1.0",
+			"stagebasereleasepaks": true,
+			"manifests": false,
+			"iterativecooking": false,
+			"iteratesharedcookedbuild": false,
+			"skipcookingeditorcontent": false,
+			"compressed": true,
+			"EncryptIniFiles": false,
+			"ForDistribution": false
+		}
+	]
+}

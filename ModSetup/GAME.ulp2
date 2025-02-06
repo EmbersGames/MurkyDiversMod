@@ -1,0 +1,128 @@
+{
+	"Version": 35,
+	"Id": "B87F06554E587786DF1B828C33212D9E",
+	"Name": "Game",
+	"Description": "",
+	"BuildConfiguration": 4,
+	"ProjectSpecified": true,
+	"ShareableProjectPath": "%%UPROJECT%%",
+	"CookConfiguration": 4,
+	"CookIncremental": false,
+	"CookOptions": "",
+	"CookMode": 1,
+	"CookUnversioned": true,
+	"CookedCultures": [
+		"fr"
+	],
+	"CookedMaps": [
+		"MAP_Main"
+	],
+	"CookedPlatforms": [
+		"Windows"
+	],
+	"DeployStreamingServer": false,
+	"DeployWithUnrealPak": true,
+	"DeployedDeviceGroupId": "D38AE53A44F241C5D8974D885E815913",
+	"DeploymentMode": 0,
+	"HideFileServerWindow": false,
+	"LaunchMode": 2,
+	"PackagingMode": 1,
+	"PackageDir": "%%PACKAGE_DIR%%",
+	"BuildMode": 0,
+	"ForceClose": true,
+	"Timeout": 60,
+	"Compressed": true,
+	"EncryptIniFiles": false,
+	"ForDistribution": false,
+	"DeployPlatform": "None",
+	"SkipCookingEditorContent": false,
+	"DeployIncremental": false,
+	"GeneratePatch": false,
+	"AddPatchLevel": false,
+	"StageBaseReleasePaks": false,
+	"DLCIncludeEngineContent": false,
+	"CreateReleaseVersion": true,
+	"CreateReleaseVersionName": "1.0",
+	"BasedOnReleaseVersionName": "",
+	"ReferenceContainerGlobalFileName": "",
+	"ReferenceContainerCryptoKeysFileName": "",
+	"RetainStagedDirectory": false,
+	"OriginalReleaseVersionName": "",
+	"CreateDLC": false,
+	"DLCName": "",
+	"GenerateChunks": false,
+	"GenerateHttpChunkData": false,
+	"HttpChunkDataDirectory": "",
+	"HttpChunkDataReleaseName": "",
+	"Archive": false,
+	"ArchiveDirectory": "",
+	"AdditionalCommandLineParameters": "",
+	"IncludePrerequisites": false,
+	"UseIoStore": false,
+	"MakeBinaryConfig": false,
+	"BuildTargetSpecified": false,
+	"BuildTargetName": "",
+	"DefaultRole":
+	{
+		"AssignedDevice": "",
+		"CommandLine": "",
+		"DeviceId": "",
+		"InitialCulture": "fr",
+		"InitialMapName": "",
+		"Name": "DefaultRole",
+		"InstanceType": 2,
+		"VsyncEnabled": false
+	},
+	"scripts": [
+		{
+			"script": "BuildCookRun",
+			"project": "%%UPROJECT%%",
+			"noP4": true,
+			"nocompile": true,
+			"nocompileeditor": true,
+			"unrealexe": "%%UNREAL_INSTALL_PATH%%\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+			"utf8output": true,
+			"clientconfig": [
+				"Shipping"
+			],
+			"serverconfig": [
+				"Shipping"
+			],
+			"platform": [
+				"Win64"
+			],
+			"cmdline":
+			{
+				"": "MAP_Main",
+				"messaging": true
+			},
+			"device": [],
+			"addcmdline":
+			{
+				"sessionid": "998DDDE642DC61FE57AEB2BA7BEC49BF",
+				"sessionowner": "flore",
+				"sessionname": "Game"
+			},
+			"map": [
+				"MAP_Main"
+			],
+			"stagingdirectory": "C:/Package/MD_Mod/Game/",
+			"build": true,
+			"cook": true,
+			"unversionedcookedcontent": true,
+			"pak": true,
+			"createreleaseversion": "1.0",
+			"generatepatch": false,
+			"manifests": false,
+			"iterativecooking": false,
+			"iteratesharedcookedbuild": false,
+			"skipcookingeditorcontent": false,
+			"compressed": true,
+			"EncryptIniFiles": false,
+			"ForDistribution": false,
+			"stage": true,
+			"package": true,
+			"RetainStagedDirectory": false
+		}
+	]
+}
