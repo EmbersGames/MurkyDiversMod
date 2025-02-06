@@ -1,5 +1,6 @@
 # Visual Studio 2015 user specific files
 .vs/
+.vsconfig
 # Jetbrains editor specific files
 .idea/
 **/RiderLink/
@@ -40,3 +41,6 @@ Releases/
 Releases/*
 External/
 External/*
+cloaked.conf
+hidden_changes.conf
+ignore.conf
