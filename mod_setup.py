@@ -4,6 +4,8 @@ import subprocess
 import configparser
 import json
 import argparse
+import urllib.request
+import zipfile
 
 
 CONFIG_FILE = "ModSetup/mod.ini"
@@ -196,7 +198,7 @@ def get_mod_package_folder(config):
     os.makedirs(mod_folder, exist_ok=True)
     return mod_folder
 
-
+# Updates the DefaultGame.ini file with the correct asset referencing policy settings
 def update_default_game_ini(old_mod_name, new_mod_name):
     ini_path = f"{BASE_PATH}/Config/DefaultGame.ini"
     
@@ -257,6 +259,13 @@ def update_uplugin_friendly_name(new_name, new_friendly_name):
         print(f"Error: File not found at {uplugin_file_path}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+# A hook function to display download progress.
+def download_progress_hook(count, block_size, total_size):
+    percent = int(count * block_size * 100 / total_size)
+    print(f"Downloaded {percent}% ({count * block_size}/{total_size} bytes)", end="\r")
+    if percent >= 100:
+        print("\nDownload completed.")
 
 
 ################################################################################
@@ -369,6 +378,25 @@ def install_mod():
 
     print(f"Copied mod '{mod_name}' to {dest_mod_folder}")
 
+def download_assets():
+    # TODO remove external folder if any, dowload new from https://drive.google.com/file/d/14U0j_DSsnuFX6eT8qTF0WHIY9PDj64bL, unzip content, remove downloaded file
+    print("Downloading Murky Divers' assets file...")
+    assets_zip_path = "ModSetup/assets.zip"
+    try:
+        urllib.request.urlretrieve("https://drive.usercontent.google.com/download?id=14U0j_DSsnuFX6eT8qTF0WHIY9PDj64bL&export=download&confirm=t", assets_zip_path, reporthook=download_progress_hook)
+    except Exception as e:
+        print(f"Failed to download the file. Error: {e}")
+        return
+
+    print("Extracting assets in /External folder...")
+    with zipfile.ZipFile(assets_zip_path, 'r') as zip_ref:
+        zip_ref.extractall('.')
+
+    # Step 3: Remove the downloaded .zip file
+    print("Cleaning up...")
+    os.remove(assets_zip_path)
+    print("Assets successfully downloaded in /External folder.")
+
 
 ################################################################################
 
@@ -386,7 +414,7 @@ def main():
     # Subparser for each operation
     subparsers = parser.add_subparsers(dest="command", required=True, help="Available operations")
 
-    # Command: --setup-mod / -s
+    # Command: setup-mod / s
     setup_mod_parser = subparsers.add_parser(
         "setup-mod", aliases=["s"],
         help="Sets the mod information and setups all the folders and naming accordingly."
@@ -395,7 +423,7 @@ def main():
     setup_mod_parser.add_argument("--creator-name", "-c", required=False, help="Name of the creator")
     setup_mod_parser.add_argument("--version", "-v", required=False, help="Version of the mod")
 
-    # Command: --set-env / -e
+    # Command: set-env / e
     set_env_parser = subparsers.add_parser(
         "set-env", aliases=["e"],
         help="Sets the required environment for developing your mod."
@@ -403,16 +431,22 @@ def main():
     set_env_parser.add_argument("--murky-path", "-m", required=False, help="Path to Murky Divers' installation")
     set_env_parser.add_argument("--unreal-path", "-u", required=False, help="Path to the Unreal Engine installation")
 
-    # Command: --package / -p
+    # Command: package / p
     package_parser = subparsers.add_parser(
         "package", aliases=["p"],
         help="Packages the mod in Binaries/{ModName}. No additional arguments required."
     )
 
-    # Command: --install / -i
+    # Command: install / i
     install_parser = subparsers.add_parser(
         "install", aliases=["i"],
         help="Installs the mod in Murky Divers. No additional arguments required."
+    )
+
+    # Command: download-assets / a
+    download_assets_parser = subparsers.add_parser(
+        "download-assets", aliases=["a"],
+        help="Downloads the 3D assets of Murky Divers in the External folder. No additional arguments required."
     )
 
     # Parse arguments
@@ -434,6 +468,9 @@ def main():
 
     elif args.command in ["install", "i"]:
         install_mod()
+
+    elif args.command in ["download-assets", "a"]:
+        download_assets()
 
 if __name__ == "__main__":
     main()
