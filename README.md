@@ -2,6 +2,15 @@
 
 This repository provides an Unreal project for creating mods for Murky Divers, as well as a Python script to manage various steps such as setup and building the mod.
 
+## Modkit Version Compatibility
+
+> ⚠ **Important Note for Version 1.2.0**
+
+Murky Divers version **1.2.0** introduces changes to the mod system. As a result, you must use **Modkit version 1.2.0** to create compatible mods.
+
+- Mods built with **older versions** of the Modkit will be **automatically disabled** when launching the game in version 1.2.0 or later.
+- To ensure your mod works correctly, make sure to **upgrade your Modkit project** to version 1.2.0 before packaging.
+
 ## Introduction to the Murky Divers Mod System
 
 Murky Divers uses a flexible plugin-based architecture built on Unreal Engine 5.3, allowing you to extend and modify game features without altering the core codebase.
