@@ -11,6 +11,7 @@ import zipfile
 CONFIG_FILE = "ModSetup/mod.ini"
 GAME_PROFILE_FILENAME = "GAME.ulp2"
 MOD_PROFILE_FILENAME = "MOD.ulp2"
+MOD_SDK_VERSION = "1.2.0"
 
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -339,6 +340,7 @@ def package_mod():
         "name": config["Mod"]["Name"],
         "creator": config["Mod"]["Creator"],
         "mod_version": config["Mod"]["Version"],
+        "ModSDKVersion": MOD_SDK_VERSION,
     }
     umod_file = os.path.join(mod_folder, f"{config['Mod']['Name']}.umod")
     with open(umod_file, "w") as f:
