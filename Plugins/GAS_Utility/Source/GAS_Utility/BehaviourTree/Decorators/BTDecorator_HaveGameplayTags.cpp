@@ -76,7 +76,7 @@ FString UBTDecorator_HaveGameplayTags::GetStaticDescription() const
 FName UBTDecorator_HaveGameplayTags::GetNodeIconName() const
 {
 	return "GraphEditor.Macro.IsValid_16x";
-	return Super::GetNodeIconName();
+	//return Super::GetNodeIconName();
 }
 #endif
 
