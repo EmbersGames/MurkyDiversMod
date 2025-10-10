@@ -78,8 +78,9 @@ FString UBT_Decorator_Blueprint_Base::GetCustomDescription_Implementation()
 {
 #if WITH_EDITOR
 	return Super::GetStaticDescription();
-#endif
+#else
 	return "";
+#endif
 }
 
 UObject* UBT_Decorator_Blueprint_Base::GetInstanceParentNode()

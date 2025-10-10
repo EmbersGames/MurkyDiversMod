@@ -11,7 +11,7 @@ import zipfile
 CONFIG_FILE = "ModSetup/mod.ini"
 GAME_PROFILE_FILENAME = "GAME.ulp2"
 MOD_PROFILE_FILENAME = "MOD.ulp2"
-MOD_SDK_VERSION = "1.2.0"
+MOD_SDK_VERSION = "1.3.0"
 
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -201,12 +201,15 @@ def get_mod_package_folder(config):
 
 # Updates the DefaultGame.ini file with the correct asset referencing policy settings
 def update_default_game_ini(old_mod_name, new_mod_name):
-    ini_path = f"{BASE_PATH}/Config/DefaultGame.ini"
+    ini_path = f"{BASE_PATH}\\Config\\DefaultGame.ini"
+    
+    print("Start changing DefaultGame.ini.")
     
     try:
         with open(ini_path, "r", encoding="utf-8") as file:
             lines = file.readlines()
         
+        AlwaysCookDirectorySet = False
         in_target_section = False
         updated_lines = []
         
@@ -218,14 +221,29 @@ def update_default_game_ini(old_mod_name, new_mod_name):
                 line = line.replace(old_mod_name, new_mod_name)
                 in_target_section = False  # Stop modifying after ProjectPlugins
             
+            if line.strip() == "+DirectoriesToAlwaysCook=(Path=\"/MD_Mod\")" or line.strip() == "+DirectoriesToAlwaysCook=(Path=\"/" + old_mod_name + "\")":
+                line = "+DirectoriesToAlwaysCook=(Path=\"/" + new_mod_name + "\")"
+                AlwaysCookDirectorySet = True
+                print("Directory to always cook has been changed with new plugin's name.")
+                
+            
             updated_lines.append(line)
+        
+        if not AlwaysCookDirectorySet:
+            updated_lines.append("")
+            updated_lines.append("[/Script/UnrealEd.ProjectPackagingSettings]")
+            updated_lines.append("+DirectoriesToAlwaysCook=(Path=\"/" + new_mod_name + "\")")
+            print("Directory to always cook has been changed with new plugin's name.")
         
         with open(ini_path, "w", encoding="utf-8") as file:
             file.writelines(updated_lines)
         
     except FileNotFoundError:
+        print(ini_path + " has not been found.")
         pass
     except Exception as e:
+        print(ini_path + " other error.")
+        print(e)
         pass
 
 

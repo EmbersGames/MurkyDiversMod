@@ -9,7 +9,7 @@ UCharacterMovementComponentBase::UCharacterMovementComponentBase(const FObjectIn
 {
 	DesiredDirection = FVector::ZeroVector;
 	bForceDesiredDirection = false;
-	bUseAccelerationForPaths = true;
+	NavMovementProperties.bUseAccelerationForPaths = true;
 	bIsCurrentlyTurning_ToLeft = true;
 	CurrentTurning_Angle = 0.f;
 	bSavedCurrentTurning_Angle = false;
